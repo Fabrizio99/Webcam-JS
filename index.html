@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCam</title>
+</head>
+<body>
+    <h1>WebCam</h1>
+    <button id="cameraButton" class="btn btn-primary">Abrir Cámara</button>
+    <div id="mediaContainer">
+        <div id="cameraContainer">
+            <button id="closeButton"><i class="fas fa-times"></i></button>
+            <video id="webcam" autoplay playsinline width="640" height="480"></video>
+            <button id="buttonTakePicture"><i class="fas fa-camera"></i></button>
+        </div>
+        <div id="pictureContainer">
+            <canvas id="canvas"></canvas>
+            <div class="button-row">
+                <button id="savePicture"><i class="fas fa-save"></i></button>
+                <button id="deletePicture"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <img  id="savedPicture" src="" alt="">
+
+    <script src="https://kit.fontawesome.com/14ffd5dd8b.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+    <script src="script.js"></script>
+</body>
+<style>
+    #cameraButton{
+        display: block;
+    }
+    #mediaContainer{
+        width: min-content;
+        display: none;
+        position: relative;
+    }
+    #cameraContainer{
+        z-index: 1;
+        position: absolute;
+    }
+    #pictureContainer{
+        z-index: 0;
+        position: absolute;
+        width: 640px;
+        height: 480px;
+    }
+    .button-row{
+        position: absolute;
+        z-index: 1;
+        bottom: 10px;
+        left: 45%;
+    }
+    #canvas{
+        position: absolute;
+        top: 0;
+    }
+    #buttonTakePicture{
+        position: absolute;
+        bottom: 10px;
+        left: calc(50% - 20px);
+        width: 40px;
+        padding: 5px;
+    }
+    #closeButton{
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        width: 40px;
+        padding: 5px;
+        z-index: 1;
+    }
+</style>
+</html>
