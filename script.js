@@ -1,7 +1,7 @@
 let picture;
 
 function setEvents(){
-    if(!takePictureButton || !takePictureButton || !closeCameraButton){
+    if(!takePictureButton || !takePictureButton || !closeCameraButton || !deletePicture || !savedPicture){
         alert('Ocurrió un error');
         return;
     }
@@ -15,7 +15,6 @@ function setEvents(){
 function cameraEvent(){
     webcam.start().then(result =>{
         mediaContainer.style.display = 'block';
-        console.log("webcam started");
      }).catch(err => {
          alert(err.name == 'NotAllowedError'?'Permitir acceso a la cámara':`Error: ${err.name}`)
      });
@@ -23,23 +22,22 @@ function cameraEvent(){
 
 function takePictureEvent(){
     picture = webcam.snap();
-    cameraContainer.style.zIndex = '0';
+    cameraContainer.style.zIndex  = '0';
     pictureContainer.style.zIndex = '1';
 }
 function closeCameraEvent() {
     webcam.stop();
-    mediaContainer.style.display = 'none';
-    cameraContainer.style.zIndex = '1';
+    mediaContainer.style.display  = 'none';
+    cameraContainer.style.zIndex  = '1';
     pictureContainer.style.zIndex = '0';
     
     if(picture==null)   return;
-    console.log('llego aca ',picture);
     savedPicture.src = picture;
 }
 
 function deletePictureEvent(){
-    picture = null;
-    cameraContainer.style.zIndex = '1';
+    picture                       = null;
+    cameraContainer.style.zIndex  = '1';
     pictureContainer.style.zIndex = '0';
 }
 
